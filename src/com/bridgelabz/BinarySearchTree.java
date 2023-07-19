@@ -19,6 +19,12 @@ public class BinarySearchTree {
         tree.insert(67);
         tree.display();
         System.out.println("Size of the elements is :"+tree.size());
+
+        int key = 30;
+        if (tree.search(tree.root, key) == null) {
+            System.out.println(key + " not found");
+        } else
+            System.out.println(key + " found");
     }
 
     void insert(int data) {
@@ -58,6 +64,13 @@ public class BinarySearchTree {
     public int size() {
         return findingSize(root);
     }
-
+    Node search(Node root, int key) {
+        if (root == null || root.data == key)
+            return root;
+        if (root.data < key) {
+            return search(root.right, key);
+        }
+        return search(root.left, key);
+    }
 
 }
